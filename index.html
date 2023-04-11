@@ -6,105 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aadi Foundation wesite</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <script type="module">
-        // import * as THREE from './node_modules/three/build/three.module.js';
-        import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+    <script type="module" src="./script.js">
 
-        const canvas = document.querySelector('canvas.webgl');
-        const scene = new THREE.Scene();
-
-        const material = new THREE.MeshToonMaterial({ color: '#ffeded' })
-        const mesh1 = new THREE.Mesh(
-            new THREE.TorusGeometry(1, 0.4, 16, 60),
-            material)
-        const mesh2 = new THREE.Mesh(
-            new THREE.ConeGeometry(1, 2, 32),
-            material
-        )
-        const mesh3 = new THREE.Mesh(
-            new THREE.TorusKnotGeometry(0.8, 0.35, 100, 16),
-            material)
-
-
-        scene.add(mesh1, mesh2, mesh3)
-
-        mesh1.position.y=2;
-        mesh1.scale.set(0.5,0.5,0.5)
-
-        // mesh2.visible=false
-
-        mesh3.position.y=-2
-        mesh3.scale.set(0.5,0.5,0.5)
-
-        const objectsDistance=4
-
-        mesh1.position.y = - objectsDistance * 0
-        mesh2.position.y = - objectsDistance * 1
-        mesh3.position.y = - objectsDistance * 2
-        const sizes = {
-            width: window.innerWidth,
-            height: window.innerHeight
-        }
-
-        const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height, 0.1, 100);
-        camera.position.z = 6;
-        scene.add(camera);
-
-        let scrollY=window.scrollY;
-
-        window.addEventListener('resize', () => {
-            sizes.width = window.innerWidth;
-            sizes.heiht = window.innerHeight;
-
-            camera.aspect = sizes.width / sizes.height
-            camera.updateProjectionMatrix()
-
-            renderer.setSize(sizes.width, sizes.height)
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-        });
-
-        window.addEventListener('scroll',()=>{
-            scrollY=window.scrollY
-            // console.log(scrollY)
-        })
-
-        const light = new THREE.DirectionalLight('#ffffff', 1)
-        light.position.set(1, 1, 0)
-        scene.add(light)
-
-        const renderer = new THREE.WebGLRenderer({
-            canvas: canvas,
-            alpha: true
-        });
-        // document.body.appendChild(renderer.domElement);
-
-        renderer.setSize(sizes.width, sizes.height);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-        const clock=new THREE.Clock();
-
-        const animate = () => {
-            const elapsedTime= clock.getElapsedTime()
-
-            renderer.render(scene, camera)
-            camera.position.y=-scrollY/sizes.height*objectsDistance;
-            // mesh1.rotation.y=elapsedTime*0.5
-            mesh1.rotation.x=-3.14*scrollY/sizes.height*0.9
-            
-            window.requestAnimationFrame(animate)
-        };
-
-        animate();
     </script>
-    <canvas class="webgl">
+    <canvas class="webgl" id="web">
         Here goes canvas
     </canvas>
+    <!-- nav -bar -->
+    <header>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="styles">
+       <link href="https://fonts.googleapis.com/css2?family=Megrim&family=Pompiere&display=swap" rel="styles">
+     </header>
+     
+     
+     <div class="frame">
+       
+       <button class="custom-btn btn-12"><span>Click!</span><span>FESTIVAL</span></button>
+       <button class="custom-btn btn-12"><span>Click!</span><span>TRATLER</span></button>
+       <button class="custom-btn btn-12"><span>Click!</span><span>PROGRAML</span></button>
+       <button class="custom-btn btn-12"><span>Click!</span><span>LOCATION</span></button>
+       <button class="custom-btn btn-12"><span>Click!</span><span>TICKRTS</span></button>
+       
+       
+       <p style="font-family: 'Megrim', cursive;">
+         </p>
+     </div>
+     
     <section class="section">
-        <h1>Starting</h1>
+        <div class="flex-text">
+           
+            <div class="d-flex justify-content-center">
+                
+                <h1 id="intro">the largest film and media<br> festival for children</h1>
+            </div>
+            
+            <div class="d-flex justify-content-around">
+               <p> let yourself be amazed</p>
+            </div>
+            <div class="d-flex justify-content-evenly">
+               <span id="span"> in the autumn holidays</span>
+            </div>
+            <div class="d-flex justify-content-evenly">
+                <h1 class="gradient-border"id="box" > Aadi</h1>
+             </div>
+             <div class="d-flex justify-content-evenly">
+                <h2 class="gradient-border-1"id="box-1"> Foundation</h2>
+             </div>
+        </div>
+        
+        <!-- <h1>Starting</h1> -->
     </section>
     <section class="section">
         <h1>Section 2</h1>
@@ -112,20 +67,24 @@
     <section class="section">
         <h1>section 3</h1>
     </section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-<script>
-    VANTA.NET({
-      el: "*",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00
-    })
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script>
+VANTA.FOG({
+  el: "*",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  highlightColor: 0x423e31,
+  midtoneColor: 0xd000ff,
+  baseColor: 0x4c3e3e,
+  speed: 2.50,
+  zoom: 3.00
+})
+</script>
+      </script>
 </body>
 
 </html>
